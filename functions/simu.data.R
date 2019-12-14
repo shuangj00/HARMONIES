@@ -241,7 +241,7 @@ visualize.networkD3 = function(pcor.mat){
   rownames(pcor.mat) = colnames(pcor.mat) = nodes
   
   # load package 
-  if (!require(igraph)) {install.packages("networkD3", version = "1.2.4.1")}
+  if (!require(igraph)) {install.packages("igraph", version = "1.2.4.1")}
   if (!require(networkD3)) {install.packages("networkD3", version = "0.4")}
   if (!require(plyr)) {install.packages("plyr", version = "1.8.4")}
   
