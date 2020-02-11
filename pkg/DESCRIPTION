@@ -16,7 +16,10 @@ LinkingTo:
     Rcpp,
     RcppArmadillo
 Imports: 
-    Rcpp
+    Rcpp,
+    qgraph
+    huge
+    pulsar
 Suggests: 
     knitr,
     rmarkdown
