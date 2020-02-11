@@ -5,7 +5,7 @@ This is the Github page for the code used in manuscript S. Jiang *et al 2019*. H
 
 ## Tutorial
 
-Please visit https://shuangj00.github.io/HARMONIES/ to see how to implement the ZINB-DPP model on the microbiome count data.
+Please visit https://shuangj00.github.io/HARMONIES/ for package installation and a tutorial of how to implement the HARMONIES.
 
 
 ## Contact
