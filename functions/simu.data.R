@@ -327,7 +327,7 @@ get.countmat = function(n,
                         zi = 0.1, 
                         seed = 123) {
   # check input 
-  source("check.input.R")
+  #source("../functions/check.input.R")
   if(n != floor(n) | n<=0 ){
     stop("sample size n must be a psoitive integer")
   }

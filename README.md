@@ -1,7 +1,7 @@
 # HARMONIES
 A Hybrid Approach for Microbiome Networks Inference via Exploiting Sparsity
 
-This is the Github page for the code used in manuscript S. Jiang *et al 2019*.
+This is the Github page for the code used in manuscript S. Jiang *et al 2019*. HARMONIES: A Hybrid Approach for Microbiome Networks Inference via Exploiting Sparsity
 
 ## Tutorial
 

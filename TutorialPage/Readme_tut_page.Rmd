@@ -12,9 +12,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r load_main_function, message=FALSE,cache = FALSE,include=FALSE }
-source("../simu.data.R")
-source("../main.R")
-source("../utility.R")
+source("../functions/simu.data.R")
+source("../functions/main.R")
+source("../functions/utility.R")
+source("../functions/check.input.R")
 library(networkD3)
 library(igraph)
 ```
@@ -29,11 +30,10 @@ knitr::include_graphics("workflow.png")
 
 
 ## Introduction
-HARMONIES is a Bayesian frequentist hybrid method that infers the network based on microbiome count data. HARMONIES consists of three major steps:
+HARMONIES is a Bayesian frequentist hybrid method that infers the network based on microbiome count data. HARMONIES consists of two major steps:
 
  1. Normalizing the microbiome count data by fitting a zero-inflated negative binomial(ZINB) model with Dirichlet process prior (DPP)
- 2. Estimating the sparse precision matrix by applying graphical lasso to the normalized abudance 
- 3. Selecting the tuning parameter in graphical lasso by a stability-based approach (StARS)
+ 2. Estimating the sparse precision matrix by applying graphical lasso to the normalized abudances with the tuning parameter selected by StARS
 
 Please refer to our paper for more details of HARMONIES: ["HARMONIES: A Hybrid Approach for Microbiome Networks Inference via Exploiting Sparsity"](https://github.com/shuangj00/HARMONIES), Jiang S, et al., 2019
 
@@ -52,10 +52,11 @@ Please refer to our paper for more details of HARMONIES: ["HARMONIES: A Hybrid A
 ## Installation
 The HARMONIES algorithm is implemented in `R` and `Rcpp`. Users who are not famaliar with basic R programming are suggested to use our web server (update soon) to run HARMONIES with a user-friendly GUI.
 
-We need to first load the functions:
-```{r, eval=FALSE}
-source("/functions/main.R")
-source("/functions/simu.data.R")
+First we install the package `HARMONIES` through Github
+```{r,install_pkg, eval=TRUE, message = F, cache = TRUE}
+library(devtools)
+install_github("shuangj00/HARMONIES", subdir = "pkg" )
+library(HARMONIES)
 ```
 
 ## Dependency
@@ -64,6 +65,7 @@ R (version 3.5.0 or later)
 **R Packages**
 
 - Rcpp (version 1.0.2 or later)
+- RcppArmadillo (version 0.9.800.4.0 or later)
 - pulsar (version 0.3.5 or later)
 - huge (version 1.3.2 or later)
 - qgraph (version 1.6.3 or later)
@@ -111,7 +113,7 @@ Here, `count.info` contains the following information:
 
 
 ### Infer the sparse network
-Given the observed count data, the main function `HARMONIES` consists the following steps: 1. Fit the ZINB-DPP model to obtain the normalized abundance. 2. Infer a sparse network using graphical lasso based on the normalized abundance. 3. Select the optimal tuning parameter in grahical lasso by Stability Approach to Regularization
+Given the observed count data, the main function `HARMONIES` consists the following steps: 1. Fit the ZINB-DPP model to obtain the normalized abundance. 2. Infer a sparse network using graphical lasso based on the normalized abundances and select the optimal tuning parameter in grahical lasso by Stability Approach to Regularization
 Selection (StARS).
 
 #### Prepare the input data
